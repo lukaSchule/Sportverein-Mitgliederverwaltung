@@ -1,7 +1,7 @@
 /**
  * 
  */
-public class HighscoreGateway
+public class Gateway
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private DatabaseConnector db;
@@ -9,7 +9,7 @@ public class HighscoreGateway
     /**
      * Konstruktor für Objekte der Klasse HighscoreGateway
      */
-    public HighscoreGateway()
+    public Gateway()
     {
         // Instanzvariable initialisieren
         db = null;
