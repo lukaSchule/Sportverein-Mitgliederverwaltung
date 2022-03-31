@@ -7,7 +7,7 @@ public class Gateway
     private DatabaseConnector db;
 
     /**
-     * Konstruktor für Objekte der Klasse HighscoreGateway
+     * Konstruktor für Objekte der Klasse Gateway
      */
     public Gateway()
     {
@@ -22,7 +22,11 @@ public class Gateway
      * @param Nachname 
      * @param Vorname
      * @param Adresse
-     * @param Typ Dies ist der Typ des Mitglieds, also Spieler, Trainer, Fan, Sponsor oder Koordinator
+     * @param Anmeldedatum
+     * @param Typ
+     * @param Position
+     * @param Aufwandsentschaedigung
+     * @param Sponsoring
      */
     public void hinzufuegen(String Nachname, String Vorname, String Adresse, String Anmeldedatum, String Typ, String Position, int Aufwandsentschaedigung, int Sponsoring)
     {
@@ -43,33 +47,77 @@ public class Gateway
         
         verbinde();
         db.executeStatement("INSERT INTO Mitglieder (Nachname, Vorname, Adresse, Anmeldedatum, Typ, Status, Aufwandsentschaedugung, Sponsoring) VALUES ('"+Nachname+"', '"+Vorname+"', '"+Adresse+"', '"+Anmeldedatum+"', '"+Typ+"', '"+status+"', "+Aufwandsentschaedigung+", "+Sponsoring+")");
+        if(Typ.equalsIgnoreCase("Spieler")){
+            db.executeStatement("INSERT INTO Spieler (Einsaetze, Tore, Position) VALUES ('"+0+"', "+0+", '"+Position);  
+        }
         beende();
     }
     
+    /**
+     * Übergibt ein Statement
+     * 
+     * @param statement
+     */
     public void executeStatement(String statement){
+        verbinde();
         db.executeStatement(statement);    
+        beende();
     }
     
+    /**
+     * Gibt die Summe der gesamten erhaltenen Gelder durch Sponsoring wieder
+     */
     public int gibSummeSponsoring(){
+        verbinde();
         db.executeStatement("SELECT SUM(Sponsoring) FROM Mitglieder");    
         QueryResult ergebnis = db.getCurrentQueryResult();
         int erg = Integer.parseInt(ergebnis.getData()[0][0]);
+        beende();
         return erg;
     }
     
-    public int gibAuflaufpraemien(){
+    /**
+     * Gibt das die Summe des Preises für alle Auflaufprämien
+     */
+    public int gibSummeAuflaufpraemien(){
+        verbinde();
         db.executeStatement("SELECT SUM(Einsaetze) FROM Spieler");       
         QueryResult ergebnis = db.getCurrentQueryResult();
         int einsaetze = Integer.parseInt(ergebnis.getData()[0][0]);
+        beende();
         return einsaetze * 50;
-    }
+        
+        }
     
+    /**
+     * Gibt die SUmme aller Ausgaben also die Summe aller Aufwandsentschaedigungen und Auflaufprämien
+     */
     public int gibSummeAusgaben(){
+        verbinde();
         db.executeStatement("SELECT SUM(Aufwandsentschaedigung) FROM Mitglieder");   
         QueryResult ergebnis = db.getCurrentQueryResult();
         int aufwandsentschaedigung = Integer.parseInt(ergebnis.getData()[0][0]);
-        int auflaufpraemien = gibAuflaufpraemien();
+        int auflaufpraemien = gibSummeAuflaufpraemien();
+        beende();
         return aufwandsentschaedigung + auflaufpraemien;
+        
+    }
+    
+    /**
+     * schreibt die Auflaufprämien an die Spieler gut. Wusste nicht was mit der Aufgabe wirklich gemeint war haben das so interpretiert
+     */
+    public void auflaufpraemienGutschreiben(){
+        verbinde();    
+        db.executeStatement("SELECT Nachname, Vorname, Adresse, Anmeldedatum, Einsaetze FROM Spieler JOIN Mitglieder on Spieler.VereinsID = Mitglieder.VereinsID");
+        QueryResult ergebnis = db.getCurrentQueryResult();
+        while(true){
+            int i = 0;
+            try{
+                new Spieler(ergebnis.getData()[i][0], ergebnis.getData()[i][1], ergebnis.getData()[i][2], ergebnis.getData()[i][3], Integer.parseInt(ergebnis.getData()[i][4]));    
+            }catch(Exception e){
+                break;        
+            }
+        }
     }
     
     /**
@@ -90,21 +138,7 @@ public class Gateway
     }
     
     /**
-     * Diese Methode setzt die UPDATE-Funktion um, indem hier Datensätze über die Angabe der id und der zu aktualisierenden Attributwerte aktualisiert werden können.
-     * 
-     * @param id
-     * @param name
-     * @param punkte
-     */
-    public void aktualisiere(int id, String name, int punkte)
-    {
-        verbinde();
-        db.executeStatement("UPDATE highscore SET name = '"+name+"', punkte = "+punkte+" WHERE id = "+id);
-        beende();
-    }
-    
-    /**
-     * Diese Methode erzeugt die Tabelle Mitglieder, wenn diese nicht schon exisitiert.
+     * Diese Methode erzeugt die Tabelle Mitglieder und Spieler, wenn diese nicht schon exisitiert.
      */
     public void erzeugeTabelle()
     {

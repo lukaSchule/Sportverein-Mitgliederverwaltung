@@ -2,6 +2,7 @@ public class Spieler extends AktivesMitglied{
     private String position;
     private int tore;
     private int einsaetze;
+    private int auflaufpreamie;
     
     public Spieler(String nachName, String vorName, String anmeldedatum, String adresse, double aufwandsentschaedigung){
         super(nachName, vorName, anmeldedatum, adresse, aufwandsentschaedigung);    
@@ -30,4 +31,8 @@ public class Spieler extends AktivesMitglied{
     public void setEinsaetze(int einsaetze){
         this.einsaetze = einsaetze;       
     }
+    
+    public void setAuflaufpraemie(int auflaufpraemie){
+        this.auflaufpreamie = auflaufpreamie;    
+    } 
 }
