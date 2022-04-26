@@ -16,6 +16,8 @@ public class Gateway
     }
 
     /**
+     * Luka
+     * 
      * Diese Methode setzt die CREATE-Funktion um, indem hier ein neues Mitglied in die Datenbank Mitglieder eingetragen wird.
      * Der Status wird dabei automatisch ermittelt, jenachdem was für ein Typ übergeben wird.
      * 
@@ -65,6 +67,8 @@ public class Gateway
     }
     
     /**
+     * Felix
+     * 
      * Gibt die Summe der gesamten erhaltenen Gelder durch Sponsoring wieder
      */
     public int gibSummeSponsoring(){
@@ -77,6 +81,8 @@ public class Gateway
     }
     
     /**
+     * Felix
+     * 
      * Gibt das die Summe des Preises für alle Auflaufprämien
      */
     public int gibSummeAuflaufpraemien(){
@@ -90,6 +96,8 @@ public class Gateway
         }
     
     /**
+     * Felix
+     * 
      * Gibt die SUmme aller Ausgaben also die Summe aller Aufwandsentschaedigungen und Auflaufprämien
      */
     public int gibSummeAusgaben(){
@@ -104,6 +112,8 @@ public class Gateway
     }
     
     /**
+     * Luka
+     * 
      * schreibt die Auflaufprämien an die Spieler gut. Wusste nicht was mit der Aufgabe wirklich gemeint war haben das so interpretiert
      */
     public void auflaufpraemienGutschreiben(){
@@ -121,6 +131,8 @@ public class Gateway
     }
     
     /**
+     * Luka 
+     * 
      * Diese Methode setzt die DELETE-Funktion um, indem hier Datensätze über die Angabe der id gelöscht werden können.
      * 
      * @param id
@@ -138,6 +150,8 @@ public class Gateway
     }
     
     /**
+     * Luka 
+     * 
      * Diese Methode erzeugt die Tabelle Mitglieder und Spieler, wenn diese nicht schon exisitiert.
      */
     public void erzeugeTabelle()
@@ -149,6 +163,8 @@ public class Gateway
     }
     
     /**
+     * Felix
+     * 
      * Diese Methode stellt eine Verbindung zur Datenbank her.
      */
     private void verbinde()
@@ -160,6 +176,8 @@ public class Gateway
     }
     
     /**
+     * Felix
+     * 
      * Diese Methode beendet die Verbindung zur Datenbank.
      */
     private void beende()

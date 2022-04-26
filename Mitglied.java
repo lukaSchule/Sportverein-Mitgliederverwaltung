@@ -1,7 +1,7 @@
 /**
  * Abstrakte Klasse Mitglied - beschreiben Sie hier die Klasse
  * 
- * @author (Ihr Name)
+ * @author (Luka)
  * @version (eine Version-Nummer oder ein Datum)
  */
 public abstract class Mitglied

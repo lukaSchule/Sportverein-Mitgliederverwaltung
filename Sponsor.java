@@ -1,4 +1,6 @@
-
+/**
+ * @Author (Felix)
+ */
 public class Sponsor extends PassivesMitglied{
     private double monatlichesSponsoring;
     

@@ -1,3 +1,6 @@
+/**
+ * @Author (Luka)
+ */
 public class Spieler extends AktivesMitglied{
     private String position;
     private int tore;

@@ -2,7 +2,7 @@
 /**
  * Beschreiben Sie hier die Klasse AktivesMitglied.
  * 
- * @author (Ihr Name) 
+ * @author (Luka) 
  * @version (eine Versionsnummer oder ein Datum)
  */
 public class AktivesMitglied extends Mitglied

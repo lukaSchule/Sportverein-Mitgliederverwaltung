@@ -12,6 +12,8 @@ public class Verwaltung
         gate = new Gateway();        
     }
     /**
+     * Felix 
+     * 
      * fügt Mitglied hinzu. Position muss auch angegeben werden, wenn das Mitglied kein Spieler ist, dann einfach leerstelle angeben.
      */
     public void fuegeMitgliedHinzu(String Nachname, String Vorname, String Adresse, String Anmeldedatum, String Typ, String Position, int Aufwandsentschaedigung, int Sponsoring){
@@ -19,6 +21,7 @@ public class Verwaltung
     }
     
     /**
+     * Felix
      * löscht mitglied mit der übergebenen id
      * 
      * @param loescheMitglied
@@ -28,6 +31,7 @@ public class Verwaltung
     }
     
     /**
+     * Luka
      * gibt das gesamte Sponsoring zurück
      * 
      * @return int
@@ -37,6 +41,7 @@ public class Verwaltung
     }
     
     /**
+     * Luka
      * gibt true zurück, wenn die Ausgaben größer als das Sponsoring sind, andernfalls false.
      * 
      * @return boolean
@@ -52,6 +57,7 @@ public class Verwaltung
     }
     
     /**
+     * Felix
      * schreibt den Spielern die Auflaufprämien gut. Wusste immernoch nicht, wie die Aufgabe gemeint war.
      */
     public void auflaufpraemieGutschreiben(){
